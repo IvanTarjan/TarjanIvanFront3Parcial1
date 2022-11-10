@@ -1,4 +1,7 @@
 import React from 'react'
+import { useState } from 'react';
+import Estatus from './components/Estatus';
+import Posteos from './components/Posteos';
 // El componente App es el padre de:
 // - Estatus
 // - Posteos
@@ -8,10 +11,16 @@ import React from 'react'
 
 function App() {
 
+  const [likesTotales, setLikesTotales] = useState(0);
+
+  const handleClickLikesTotales = ()=>{
+    setLikesTotales((prevLikesTotales)=>prevLikesTotales+1)
+  }
+
   return (
     <div className="App">
-      <Estatus />
-      <Posteos />
+      <Estatus likesTotales={likesTotales}/>
+      <Posteos handleClickLikesTotales={handleClickLikesTotales}/>
     </div>
   );
 }
